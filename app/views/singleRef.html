@@ -1,0 +1,11 @@
+<div ng-switch="reference.type">
+    <div ng-switch-when="BOOK">
+        <span ng-repeat='author in reference.authors'>{{author.last}},{{author.first}}</span>.<i>{{reference.title}}.</i>{{reference.city}}:{{reference.publisher}}, {{reference.year}}. Print.
+    </div>
+    <div ng-switch-when="MAGAZINE">
+        <span ng-repeat='author in reference.authors'>{{author.last}},{{author.first}} </span>. &quot;{{reference.title}}.&quot; <i>{{reference.journal}}</i>.{{reference.month}}.{{reference.year}}&#58;{{reference.page}}.Print.
+    </div>
+    <div ng-switch-when="WEB">
+        <span ng-repeat='author in reference.authors'>{{author.last}},{{author.first}} </span>.&quot;<a href={{reference.url}}>{{reference.title}}</a>&quot;_<i>{{reference.sponsor}}</i>. N.p. {{reference.year}}. Web. {{reference.accessed}}
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<h2>The ratz</h2>
+<table>
+    <tr ng-repeat="ref in cntrl.refs| filter:cntrl.filters">
+        <td><button ng-click = 'cntrl.editReference(ref.index)'>edit</button></td>
+        <td><ref-directive reference='ref'></ref-directive></td>
+        <td><button ng-click = 'cntrl.purgeReference(ref.index)'>delete</button></td>
+    </tr>
+</table>
+
+<button ng-repeat='type in cntrl.types' ng-click="cntrl.setFilter(type.type)">{{type.label}}</button><button ng-click="cntrl.setFilter('')">all</button><br/>
+<button ng-click="cntrl.newReference()">new</button>

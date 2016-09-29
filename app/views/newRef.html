@@ -1,0 +1,49 @@
+<form name='addRefsForm'>
+    <label for="selectType">type:</label>
+    <select name='selectType' id='selectType' ng-model='cntrl.workingRef.type'>
+        <option ng-repeat='type in cntrl.types' value ='{{type.type}}'>{{type.label}}</option>
+    </select>
+</form>
+
+<div ng-switch = 'cntrl.workingRef.type'>
+    <div ng-switch-when='BOOK'>
+        title:<input type='text' ng-model='cntrl.workingRef.title'><br />
+        authors:<div ng-repeat = 'author in cntrl.workingRef.authors'>
+            &nbsp;&nbsp;first:<input type='text' ng-model='author.first'>&nbsp;
+            last:<input type='text' ng-model='author.last'>
+            <button ng-click='cntrl.workingRef.authors[$index-1]=cntrl.workingRef.authors.splice($index,1,cntrl.workingRef.authors[$index-1])[0]'>up</button>
+            <button ng-click='cntrl.workingRef.authors.splice($index,1)'>destroy</button><br/>
+        </div><button ng-click='cntrl.workingRef.authors.push({})'>new author</button><br/>
+        year:<input type='number' ng-model='cntrl.workingRef.year'><br />
+        city:<input type='text' ng-model='cntrl.workingRef.city'><br />
+        publisher:<input type='text' ng-model='cntrl.workingRef.publisher'><br />
+    </div>
+    <div ng-switch-when='MAGAZINE'>
+        title:<input type='text' ng-model='cntrl.workingRef.title'><br />
+        journal:<input type='text' ng-model='cntrl.workingRef.journal'><br />
+        authors:<div ng-repeat = 'author in cntrl.workingRef.authors'>
+            &nbsp;&nbsp;first:<input type='text' ng-model='author.first'>&nbsp;
+            last:<input type='text' ng-model='author.last'>
+            <button ng-click='cntrl.workingRef.authors[$index-1]=cntrl.workingRef.authors.splice($index,1,cntrl.workingRef.authors[$index-1])[0]'>up</button>
+            <button ng-click='cntrl.workingRef.authors.splice($index,1)'>destroy</button><br/>
+        </div><button ng-click='cntrl.workingRef.authors.push({})'>new author</button><br/>
+        month:<input type='text' ng-model='cntrl.workingRef.month'><br />
+        year:<input type='number' ng-model='cntrl.workingRef.year'><br />
+        page:<input type='number' ng-model='cntrl.workingRef.page'><br /> 
+    </div>
+    <div ng-switch-when='WEB'>
+        title:<input type='text' ng-model='cntrl.workingRef.title'><br />
+        url:<input type='url' ng-model='cntrl.workingRef.url'><br />
+        sponsor:<input type='text' ng-model='cntrl.workingRef.sponsor'><br />
+        authors:<div ng-repeat = 'author in cntrl.workingRef.authors'>
+            &nbsp;&nbsp;first:<input type='text' ng-model='author.first'>&nbsp;
+            last:<input type='text' ng-model='author.last'>
+            <button ng-click='cntrl.workingRef.authors[$index-1]=cntrl.workingRef.authors.splice($index,1,cntrl.workingRef.authors[$index-1])[0]'>up</button>
+            <button ng-click='cntrl.workingRef.authors.splice($index,1)'>destroy</button><br/>
+        </div><button ng-click='cntrl.workingRef.authors.push({})'>new author</button><br/>
+        year:<input type='number' ng-model='cntrl.workingRef.year'><br />
+        year accessed:<input type='number' ng-model='cntrl.workingRef.accessed'><br />
+    </div>
+</div>
+<button ng-click='cntrl.addReference()'>add</button>
+<button ng-click='cntrl.done()'>done</button>
